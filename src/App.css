@@ -1,0 +1,45 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.highest-visits {
+    font-weight: bold;
+    background: linear-gradient(170deg, gold 40%, white 60%, silver);
+    filter: saturate(4);
+}
+
+#sort-buttons {
+    margin-top: 10px;
+}
+
+#asce-button {
+    margin-right: 10px;
+}
+
+html, body {
+    width: 100%;
+}
+
+ul {
+    list-style: none;
+    text-align: center;
+    width: 100%;
+    border: solid 1px black;
+    padding-left: 0;
+    border-bottom: 0;
+    transition: 5s;
+}
+
+li {
+    border-bottom: solid 1px black;
+    background-color: lightgray;
+    padding: 3px;
+}
+
+li:nth-child(2n) {
+    background-color:beige;
+}
