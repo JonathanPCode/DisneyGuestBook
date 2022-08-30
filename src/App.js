@@ -5,8 +5,10 @@ const guestbook = {};
 let highestVisitCount = 0;
 
 function App() {
+  // Initial state of guestbook, and function to change guestbook
   const [guests, setGuests] = React.useState([]);
 
+  // Takes key and returns built list item of guestbook
   function createListItem(key) {
     if (guestbook[key].visits >= highestVisitCount) {
       return <li class="highest-visits">{guestbook[key].initials} - {guestbook[key].name} - {guestbook[key].visits}</li>;
@@ -14,6 +16,7 @@ function App() {
     return <li>{guestbook[key].initials} - {guestbook[key].name} - {guestbook[key].visits}</li>;
   }
 
+  // Builds object containing name, initials, and visits, then adds to guestbook and updates guestbook.
   function handleSubmit() {
     const input = document.getElementById("name");
     const name = input.value;
@@ -23,6 +26,7 @@ function App() {
       const arr = name.split(" ");
       let temp = "";
       arr.forEach(e => {
+        // [...e][0] instead of e[0] to handle unicode (emoji's 🤙)
         temp += [...e][0];
       });
       guestbook[name] = {name: name, initials: temp, visits: 1};
@@ -38,18 +42,21 @@ function App() {
     )
   }
 
+  // Sorts guestbook alphabetically, ascending
   function sortAsce() {
     setGuests(
       Object.keys(guestbook).sort((a, b) => a.localeCompare(b)).map(createListItem)
     )
   }
 
+  // Sorts guestbook alphabetically, descending
   function sortDesc() {
     setGuests(
       Object.keys(guestbook).sort((a, b) => b.localeCompare(a)).map(createListItem)
     )
   }
 
+  // Submits if "Enter" key is pressed.
   function handleKey(e) {
     if (e.key !== "Enter") return;
     handleSubmit();
