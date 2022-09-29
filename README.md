@@ -5,6 +5,3 @@ git clone
 npm install
 npm start
 ```
-
-or click this thing
-http://disney-guest-book.s3-website-us-east-1.amazonaws.com/
